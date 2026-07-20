@@ -1,0 +1,25 @@
+# srcgraph is its own Cargo workspace — it lives under yah/external/ during
+# early iteration but is intended to move to its own repo. yah's `.gitignore`
+# excludes `external/`, so this tree carries independent git history.
+[workspace]
+members = [
+    "crates/srcgraph-core",
+    "crates/srcgraph-metrics",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.8.20"
+edition = "2021"
+authors = ["yah Dev <human@yah.dev>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yah-ai/srcgraph"
+
+[workspace.dependencies]
+petgraph = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2.0"
+quick-xml = { version = "0.36", features = ["serialize"] }
+srcgraph-core = { path = "crates/srcgraph-core", version = "0.8.20" }
+srcgraph-metrics = { path = "crates/srcgraph-metrics", version = "0.8.20" }

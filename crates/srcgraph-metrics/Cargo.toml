@@ -1,0 +1,44 @@
+# Self-contained (no `workspace = true`) — consumed cross-repo via `paths`
+# override; see srcgraph-core/Cargo.toml. Keep versions in lockstep with the
+# workspace; re-publish to crates.io when petgraph changes.
+[package]
+name = "srcgraph-metrics"
+version = "0.8.20"
+edition = "2021"
+authors = ["yah Dev <human@yah.dev>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yah-ai/srcgraph"
+description = "Graph-theoretic code-analysis metrics (SCC, LCOM4, betweenness, instability, …)"
+readme = "README.md"
+keywords = ["graph", "code-analysis", "metrics", "scc", "lcom4"]
+categories = ["development-tools", "algorithms"]
+
+[lib]
+name = "srcgraph_metrics"
+path = "src/lib.rs"
+
+[features]
+default = ["all"]
+
+# Per-metric gates — compile only what's used.
+scc             = []
+lcom4           = []
+betweenness     = []
+instability     = []
+clone_detection = []
+
+all = ["scc", "lcom4", "betweenness", "instability", "clone_detection"]
+
+[dependencies]
+petgraph = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2.0"
+srcgraph-core = { path = "../srcgraph-core", version = "0.8.20" }
+
+# Bench targets emit GraphML so a sibling Python script can run networkx on the
+# exact same graph for an apples-to-apples comparison.
+[[bench]]
+name = "betweenness"
+harness = false
+path = "benches/betweenness.rs"

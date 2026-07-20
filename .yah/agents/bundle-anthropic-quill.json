@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "agentId": "bundle-anthropic-quill",
+  "function": {
+    "class": "Thief",
+    "subclassId": "bundle-anthropic-thief-primary"
+  },
+  "identity": {
+    "name": "Quill",
+    "portraitRef": "agent-light-thief-01",
+    "sigil": "key",
+    "accentColor": "#b08438",
+    "variants": {
+      "leaf": {
+        "accent": "#3a5d3a"
+      },
+      "moon": {
+        "accent": "#7a4ec9"
+      },
+      "chalice": {
+        "accent": "#7a1f1f"
+      },
+      "rose": {
+        "accent": "#5a2a52"
+      },
+      "key": {
+        "accent": "#3a6d6d"
+      },
+      "anchor": {
+        "accent": "#2c3e6c"
+      },
+      "dagger": {
+        "accent": "#c97a3e"
+      },
+      "spear": {
+        "accent": "#b08438"
+      }
+    }
+  },
+  "persona": {
+    "rolePrompt": "You are a swift generalist. Handle quick lookups, short drafts, and reconnaissance tasks. Escalate to a Wizard if depth is needed."
+  },
+  "workingSet": {
+    "pinned": false
+  },
+  "source": "preroll"
+}

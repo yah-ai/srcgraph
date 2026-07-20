@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "yah": {
+      "args": [
+        "mcp",
+        "/Users/user/ss/yah/external/code-graph"
+      ],
+      "command": "/Applications/yah.app/Contents/MacOS/yah"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Bash(*)"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="name" for="node" attr.name="name" attr.type="string" />
+  <key id="namespace" for="node" attr.name="namespace" attr.type="string" />
+  <key id="lineCount" for="node" attr.name="lineCount" attr.type="int" />
+  <key id="methodCount" for="node" attr.name="methodCount" attr.type="int" />
+  <key id="methodConnectivity" for="node" attr.name="methodConnectivity" attr.type="string" />
+  <key id="type" for="edge" attr.name="type" attr.type="string" />
+  <graph id="G" edgedefault="directed">
+    <node id="com.example.Alpha">
+      <data key="name">Alpha</data>
+      <data key="namespace">com.example</data>
+      <data key="lineCount">42</data>
+      <data key="methodCount">3</data>
+      <data key="methodConnectivity">{"methods":["foo","bar","baz"],"edges":[["foo","bar"]]}</data>
+    </node>
+    <node id="com.example.Beta">
+      <data key="name">Beta</data>
+      <data key="namespace">com.example</data>
+      <data key="lineCount">100</data>
+      <data key="methodCount">7</data>
+      <data key="methodConnectivity">{"methods":["init","run","stop"],"edges":[]}</data>
+    </node>
+    <node id="com.example.Gamma">
+      <data key="name">Gamma</data>
+      <data key="namespace">com.example</data>
+      <data key="lineCount">25</data>
+      <data key="methodCount">2</data>
+      <data key="methodConnectivity">{"methods":["create","destroy"],"edges":[]}</data>
+    </node>
+    <edge id="e0" source="com.example.Alpha" target="com.example.Beta">
+      <data key="type">MethodCall</data>
+    </edge>
+    <edge id="e1" source="com.example.Beta" target="com.example.Gamma">
+      <data key="type">Inheritance</data>
+    </edge>
+  </graph>
+</graphml>

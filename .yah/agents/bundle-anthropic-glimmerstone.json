@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "agentId": "bundle-anthropic-glimmerstone",
+  "function": {
+    "class": "Wizard",
+    "subclassId": "bundle-anthropic-wizard-primary"
+  },
+  "identity": {
+    "name": "Glimmerstone",
+    "portraitRef": "agent-light-wizard-03",
+    "sigil": "moon",
+    "accentColor": "#7a4ec9",
+    "variants": {
+      "moon": {
+        "accent": "#7a4ec9"
+      },
+      "dagger": {
+        "accent": "#c97a3e"
+      },
+      "anchor": {
+        "accent": "#2c3e6c"
+      },
+      "chalice": {
+        "accent": "#7a1f1f"
+      },
+      "key": {
+        "accent": "#3a6d6d"
+      },
+      "rose": {
+        "accent": "#5a2a52"
+      },
+      "spear": {
+        "accent": "#b08438"
+      },
+      "leaf": {
+        "accent": "#3a5d3a"
+      }
+    }
+  },
+  "persona": {
+    "rolePrompt": "You are a thoughtful system architect. Prefer composition over inheritance and favor explicit designs over implicit magic."
+  },
+  "workingSet": {
+    "pinned": true
+  },
+  "source": "preroll"
+}

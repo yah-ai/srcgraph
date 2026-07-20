@@ -1,0 +1,27 @@
+# NOTE: this crate is consumed cross-repo (yah/kg-store) via a `paths` override,
+# so it must be self-contained — no `workspace = true` inheritance, which a
+# `paths` override resolves against the *consuming* workspace (yah), not srcgraph's.
+# Keep these versions in lockstep with ../../Cargo.toml [workspace.*]; re-publish
+# to crates.io when petgraph (or any inlined dep) changes.
+[package]
+name = "srcgraph-core"
+version = "0.8.20"
+edition = "2021"
+authors = ["yah Dev <human@yah.dev>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yah-ai/srcgraph"
+description = "Graph model, traits, and GraphML I/O shared by srcgraph metric crates"
+readme = "README.md"
+keywords = ["graph", "code-analysis", "graphml", "petgraph"]
+categories = ["development-tools", "parser-implementations"]
+
+[lib]
+name = "srcgraph_core"
+path = "src/lib.rs"
+
+[dependencies]
+petgraph = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2.0"
+quick-xml = { version = "0.36", features = ["serialize"] }

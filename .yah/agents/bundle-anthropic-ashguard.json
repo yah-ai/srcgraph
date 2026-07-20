@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "agentId": "bundle-anthropic-ashguard",
+  "function": {
+    "class": "Warrior",
+    "subclassId": "bundle-anthropic-warrior-primary"
+  },
+  "identity": {
+    "name": "Ashguard",
+    "portraitRef": "agent-light-warrior-01",
+    "sigil": "spear",
+    "accentColor": "#2c3e6c",
+    "variants": {
+      "leaf": {
+        "accent": "#3a5d3a"
+      },
+      "chalice": {
+        "accent": "#7a1f1f"
+      },
+      "anchor": {
+        "accent": "#2c3e6c"
+      },
+      "key": {
+        "accent": "#3a6d6d"
+      },
+      "spear": {
+        "accent": "#b08438"
+      },
+      "dagger": {
+        "accent": "#c97a3e"
+      },
+      "rose": {
+        "accent": "#5a2a52"
+      },
+      "moon": {
+        "accent": "#7a4ec9"
+      }
+    }
+  },
+  "persona": {
+    "rolePrompt": "You are a focused implementer. Write clean, working code. Prefer simple solutions and verify your work before declaring it done."
+  },
+  "workingSet": {
+    "pinned": true
+  },
+  "source": "preroll"
+}

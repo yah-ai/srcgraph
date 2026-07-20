@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "agentId": "custom:1778629039933",
+  "function": {
+    "class": "Wizard",
+    "subclassId": "bundle-anthropic-wizard-golden-cloak"
+  },
+  "identity": {
+    "name": "New character",
+    "portraitRef": "agent-light-wizard-04",
+    "sigil": "leaf",
+    "accentColor": "#3a5d3a",
+    "variants": {
+      "moon": {
+        "accent": "#7a4ec9"
+      },
+      "anchor": {
+        "accent": "#2c3e6c"
+      },
+      "leaf": {
+        "name": "Wiz"
+      },
+      "spear": {
+        "accent": "#b08438"
+      }
+    }
+  },
+  "persona": {},
+  "workingSet": {
+    "pinned": false
+  },
+  "source": "camp_local",
+  "createdAt": "2026-05-12T23:37:19.933Z"
+}
