@@ -1,6 +1,21 @@
 # srcgraph is its own Cargo workspace — it lives under yah/external/ during
 # early iteration but is intended to move to its own repo. yah's `.gitignore`
 # excludes `external/`, so this tree carries independent git history.
+#
+# @yah:ticket(R540-T5, "srcgraph mirror: add .github/workflows/release.yml (OIDC trusted publishing)")
+# @yah:assignee(agent:claude)
+# @yah:at(2026-07-20T23:37:42Z)
+# @yah:parent(R540)
+# @yah:next("Add oss/srcgraph/.github/workflows/release.yml modeled on oss/yah-base's (tag-triggered, id-token: write, crates-io-auth-action, cargo publish --workspace).")
+# @yah:next("Re-export: ./scripts/export-oss-clean.sh srcgraph")
+# @yah:next("Operator-only: configure the crates.io Trusted Publisher for srcgraph-core + srcgraph-metrics (owner yah-ai/srcgraph, workflow release.yml) — the workflow cannot authenticate until that exists.")
+# @yah:verify("test -f oss/srcgraph/.github/workflows/release.yml")
+# @yah:verify("gh api repos/yah-ai/srcgraph/contents/.github/workflows/release.yml --jq .name")
+# @yah:handoff("Wrote oss/srcgraph/.github/workflows/release.yml, modeled on oss/yah-base's. diff vs that template is only: owner pinned to yah-ai/srcgraph, subtree name, and two clarifying comments. Tag-triggered (v*), permissions id-token: write, rust-lang/crates-io-auth-action@v1, cargo publish --workspace (topo-orders srcgraph-core then srcgraph-metrics).")
+# @yah:handoff("srcgraph needs no strip-on-export accommodation: it has no cross-repo deps (petgraph + serde only) and no [patch.crates-io] block, so `cargo test --workspace` resolves standalone in the mirror. This is the failure mode that still dogs the yubaba mirror (kamaji-bin publish=false + strip-on-export), and it does not apply here.")
+# @yah:next("BLOCKED on commit (agent git writes are policy-denied). oss/srcgraph/.github/ is untracked; export-oss-clean.sh exports from a clean worktree at HEAD, so the workflow cannot reach the mirror until it is committed.")
+# @yah:next("Once committed: ./scripts/export-oss-clean.sh srcgraph")
+# @yah:next("Operator-only, and required before the workflow can actually publish: configure the crates.io Trusted Publisher on BOTH srcgraph-core and srcgraph-metrics — owner yah-ai/srcgraph, workflow release.yml. Without it the OIDC auth step fails. Same operator step R582 lists for the other mirrors.")
 [workspace]
 members = [
     "crates/srcgraph-core",
