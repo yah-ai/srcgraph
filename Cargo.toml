@@ -3,19 +3,18 @@
 # excludes `external/`, so this tree carries independent git history.
 #
 # @yah:ticket(R540-T5, "srcgraph mirror: add .github/workflows/release.yml (OIDC trusted publishing)")
-# @yah:assignee(agent:claude)
-# @yah:at(2026-07-20T23:37:42Z)
+# @yah:status(review)
+# @yah:assignee(agent:bundle-anthropic-ashguard)
+# @yah:at(2026-07-21T20:00:31Z)
 # @yah:parent(R540)
-# @yah:next("Add oss/srcgraph/.github/workflows/release.yml modeled on oss/yah-base's (tag-triggered, id-token: write, crates-io-auth-action, cargo publish --workspace).")
-# @yah:next("Re-export: ./scripts/export-oss-clean.sh srcgraph")
-# @yah:next("Operator-only: configure the crates.io Trusted Publisher for srcgraph-core + srcgraph-metrics (owner yah-ai/srcgraph, workflow release.yml) — the workflow cannot authenticate until that exists.")
+# @yah:next("Nothing blocking. The publish path is armed end-to-end; it fires on the next version bump.")
+# @yah:handoff("DONE 2026-07-21. oss/srcgraph/.github/workflows/release.yml is written, committed (tree clean), and exported — mirror yah-ai/srcgraph @ a86997d1 carries a byte-identical copy (verified by diffing the GitHub contents API blob against the local file). Tag-triggered (v*), permissions id-token: write, rust-lang/crates-io-auth-action@v1, then `cargo publish --workspace` which topo-orders srcgraph-core then srcgraph-metrics.")
+# @yah:handoff("The operator-only crates.io Trusted Publisher step is ALSO done — `DRY_RUN=1 scripts/set-trusted-publishers.sh srcgraph-core srcgraph-metrics` reports both already trust yah-ai/srcgraph:release.yml. That script (untracked, from the R610 track) supersedes the long-standing W230/R582 note that trusted-publisher config is web-UI-only: the endpoint accepts an API token carrying the `trusted-publishing` scope.")
+# @yah:handoff("srcgraph needs no strip-on-export accommodation: no cross-repo deps (petgraph + serde only) and no [patch.crates-io] block, so `cargo test --workspace` resolves standalone in the mirror. That failure mode is yubaba-specific (kamaji-bin publish=false + strip-on-export).")
 # @yah:verify("test -f oss/srcgraph/.github/workflows/release.yml")
 # @yah:verify("gh api repos/yah-ai/srcgraph/contents/.github/workflows/release.yml --jq .name")
-# @yah:handoff("Wrote oss/srcgraph/.github/workflows/release.yml, modeled on oss/yah-base's. diff vs that template is only: owner pinned to yah-ai/srcgraph, subtree name, and two clarifying comments. Tag-triggered (v*), permissions id-token: write, rust-lang/crates-io-auth-action@v1, cargo publish --workspace (topo-orders srcgraph-core then srcgraph-metrics).")
-# @yah:handoff("srcgraph needs no strip-on-export accommodation: it has no cross-repo deps (petgraph + serde only) and no [patch.crates-io] block, so `cargo test --workspace` resolves standalone in the mirror. This is the failure mode that still dogs the yubaba mirror (kamaji-bin publish=false + strip-on-export), and it does not apply here.")
-# @yah:next("BLOCKED on commit (agent git writes are policy-denied). oss/srcgraph/.github/ is untracked; export-oss-clean.sh exports from a clean worktree at HEAD, so the workflow cannot reach the mirror until it is committed.")
-# @yah:next("Once committed: ./scripts/export-oss-clean.sh srcgraph")
-# @yah:next("Operator-only, and required before the workflow can actually publish: configure the crates.io Trusted Publisher on BOTH srcgraph-core and srcgraph-metrics — owner yah-ai/srcgraph, workflow release.yml. Without it the OIDC auth step fails. Same operator step R582 lists for the other mirrors.")
+# @yah:verify("DRY_RUN=1 scripts/set-trusted-publishers.sh srcgraph-core srcgraph-metrics  # expect: skip/already trusts, both crates")
+# @yah:gotcha("Both crates are at 0.8.20 and 0.8.20 is ALREADY on crates.io, so pushing a v0.8.20 tag would fail the publish step on 'crate version already uploaded'. The workflow only does useful work from the next bump onward — it has never executed, so its first real run is untested by construction (agent git writes are policy-denied, so no tag could be pushed to smoke it).")
 [workspace]
 members = [
     "crates/srcgraph-core",
@@ -24,7 +23,7 @@ members = [
 resolver = "2"
 
 [workspace.package]
-version = "0.8.20"
+version = "0.8.21"
 edition = "2021"
 authors = ["yah Dev <human@yah.dev>"]
 license = "MIT OR Apache-2.0"
@@ -36,5 +35,5 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2.0"
 quick-xml = { version = "0.36", features = ["serialize"] }
-srcgraph-core = { path = "crates/srcgraph-core", version = "0.8.20" }
-srcgraph-metrics = { path = "crates/srcgraph-metrics", version = "0.8.20" }
+srcgraph-core = { path = "crates/srcgraph-core", version = "0.8.21" }
+srcgraph-metrics = { path = "crates/srcgraph-metrics", version = "0.8.21" }

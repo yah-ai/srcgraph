@@ -3,7 +3,7 @@
 # workspace; re-publish to crates.io when petgraph changes.
 [package]
 name = "srcgraph-metrics"
-version = "0.8.20"
+version = "0.8.21"
 edition = "2021"
 authors = ["yah Dev <human@yah.dev>"]
 license = "MIT OR Apache-2.0"
@@ -34,7 +34,7 @@ petgraph = "0.8"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "2.0"
-srcgraph-core = { path = "../srcgraph-core", version = "0.8.20" }
+srcgraph-core = { path = "../srcgraph-core", version = "0.8.21" }
 
 # Bench targets emit GraphML so a sibling Python script can run networkx on the
 # exact same graph for an apples-to-apples comparison.
