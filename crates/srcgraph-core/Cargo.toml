@@ -5,7 +5,7 @@
 # to crates.io when petgraph (or any inlined dep) changes.
 [package]
 name = "srcgraph-core"
-version = "0.8.33"
+version = "0.8.34"
 edition = "2021"
 authors = ["yah Dev <human@yah.dev>"]
 license = "MIT OR Apache-2.0"
