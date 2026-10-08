@@ -10,14 +10,7 @@
 //!
 //! See `DESIGN.md` (Phase 1) at the workspace root.
 //!
-//! @yah:ticket(R152-T4, "metrics::betweenness — Brandes' algorithm + perf benchmark vs networkx (headline win)")
-//! @yah:assignee(agent:claude)
-//! @yah:at(2026-05-12T22:14:30Z)
-//! @yah:status(review)
-//! @yah:parent(R152)
-//! @yah:verify("cargo test -p srcgraph-metrics betweenness")
-//! @yah:verify("cargo bench -p srcgraph-metrics --bench betweenness && python3 crates/srcgraph-metrics/benches/networkx_betweenness.py")
-//! @yah:handoff("Brandes' O(VE) betweenness implemented generic over N:ClassNode/E:EdgeKind; networkx-default normalization (1/((n-1)(n-2))) for directed graphs. 6 unit tests (path, hub, parallel-split-credit, isolated, empty, 3-cycle). Harness-less bench at benches/betweenness.rs writes synthetic Erdős–Rényi-ish DAGs to target/bench-graphs/, companion Python script benches/networkx_betweenness.py reads the same GraphML and times nx.betweenness_centrality. Result on aarch64: Rust 0.24/7.0/20.7/90/604 ms vs networkx 9.4/207/898/3975/28771 ms for n=100/500/1000/2000/5000 — roughly 30–48× speedup, growing with n. Headline win confirmed.")
+//! archived: R152 — history: `yah board history oss/srcgraph/crates/srcgraph-metrics/src/betweenness.rs`
 
 use petgraph::graph::{Graph, NodeIndex};
 use petgraph::visit::EdgeRef;

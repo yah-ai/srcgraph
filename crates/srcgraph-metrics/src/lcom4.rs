@@ -3,13 +3,7 @@
 //!
 //! See `DESIGN.md` (Phase 1) at the workspace root.
 //!
-//! @yah:ticket(R152-T3, "metrics::lcom4 — connected components on per-class method-field bipartite graph")
-//! @yah:assignee(agent:claude)
-//! @yah:at(2026-05-12T22:14:28Z)
-//! @yah:status(review)
-//! @yah:parent(R152)
-//! @yah:verify("cargo test -p srcgraph-metrics lcom4")
-//! @yah:handoff("Implemented LCOM4: build_method_graph (UnGraph from MethodConnectivity), compute_lcom4 (petgraph connected_components, None for empty), compute_lcom4_all (per-class scores generic over ClassNode+EdgeKind; None when methodConnectivity is absent). 6 tests pass; covers cohesive, disjoint, isolated, empty, ghost-endpoint, and mixed-graph cases.")
+//! archived: R152 — history: `yah board history oss/srcgraph/crates/srcgraph-metrics/src/lcom4.rs`
 
 use petgraph::algo::connected_components;
 use petgraph::graph::UnGraph;

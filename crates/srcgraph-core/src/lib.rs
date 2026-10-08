@@ -2,20 +2,9 @@
 //!
 //! See `DESIGN.md` at the workspace root for the full plan.
 //!
-//! @yah:relay(R152, "srcgraph crate family v1 — core + Phase 1 metrics + PyO3 bindings")
-//! @yah:at(2026-05-12T22:13:13Z)
-//! @yah:status(open)
-//! @yah:next("T1 OwnedGraph+GraphML reader → T2 SCC → T3 LCOM4 → T4 Betweenness (benchmark vs networkx) → T5 PyO3 bindings → T6 swap visiting tool's betweenness panel")
 //! @arch:see(DESIGN.md)
 //!
-//! @yah:ticket(R152-T1, "srcgraph-core: OwnedGraph + GraphML reader matching the visiting tool's schema")
-//! @yah:assignee(agent:claude)
-//! @yah:at(2026-05-12T22:14:22Z)
-//! @yah:status(review)
-//! @yah:parent(R152)
-//! @yah:verify("cargo test -p srcgraph-core graphml_roundtrip")
-//! @yah:handoff("Implemented OwnedClassNode + OwnedGraph + GraphML reader/writer in srcgraph-core. All attributes from the visiting-tool schema are parsed (name, namespace, lineCount, methodCount, halstead fields, methodConnectivity as typed MethodConnectivity, all semantic-mode JSON blobs as serde_json::Value). Writer uses CDATA for JSON blobs to avoid XML escaping issues. ClassNode trait extended with method_connectivity() defaulting to None.")
-//! @yah:verify("cargo test -p srcgraph-core graphml_roundtrip")
+//! archived: R152 — history: `yah board history oss/srcgraph/crates/srcgraph-core/src/lib.rs`
 
 pub mod graphml;
 pub mod owned;

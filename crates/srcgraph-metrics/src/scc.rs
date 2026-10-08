@@ -3,13 +3,7 @@
 //!
 //! See `DESIGN.md` (Phase 1) at the workspace root.
 //!
-//! @yah:ticket(R152-T2, "metrics::scc — Tarjan SCC + condensation DAG + rate_scc classifier (ready/partial/entangled)")
-//! @yah:assignee(agent:claude)
-//! @yah:at(2026-05-12T22:14:25Z)
-//! @yah:status(review)
-//! @yah:parent(R152)
-//! @yah:verify("cargo test -p srcgraph-metrics scc")
-//! @yah:handoff("Implemented SccStatus enum (Ready/Partial/Entangled), SccInfo, SccResult, rate_scc classifier, and compute_scc generic over N:ClassNode+E:EdgeKind. Builds condensation DAG alongside SCC list. 5 tests all pass.")
+//! archived: R152 — history: `yah board history oss/srcgraph/crates/srcgraph-metrics/src/scc.rs`
 
 use petgraph::algo::tarjan_scc;
 use petgraph::graph::{DiGraph, Graph, NodeIndex};
